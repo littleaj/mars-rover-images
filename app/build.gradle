@@ -26,6 +26,16 @@ application {
     mainClass = 'org.github.littleaj.marsroverimages.App'
 }
 
+task copyConfig(type: Copy) {
+    from rootDir
+    into sourceSets.main.output.resourcesDir
+    include 'config.properties'
+}
+
+tasks.named('processResources') {
+    dependsOn copyConfig
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
