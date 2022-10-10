@@ -7,22 +7,23 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
+    implementation 'com.google.code.gson:gson:2.9.1'
+
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testImplementation 'org.mockito:mockito-core:4.8.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.8.0'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
 }
 
 application {
-    // Define the main class for the application.
     mainClass = 'org.github.littleaj.marsroverimages.App'
 }
 
@@ -37,6 +38,5 @@ tasks.named('processResources') {
 }
 
 tasks.named('test') {
-    // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
