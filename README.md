@@ -31,7 +31,7 @@ Parameters can appear in any order.
 ||||
 
 ### Config File
-Optionally, the parameters can be provided via a configuration file. Create a file named `config.properties` in the root project folder. Then, any of the following properties:
+Optionally, the parameters can be provided via a configuration file. Create a file named `config.properties` in the root project folder. Then, add any of the following properties:
 ```
 apikey=MY_API_KEY
 days=10
