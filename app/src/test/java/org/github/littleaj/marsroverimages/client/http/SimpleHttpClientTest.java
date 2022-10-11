@@ -22,7 +22,7 @@ public class SimpleHttpClientTest {
 
   @Test
   void existingPageReturns200() throws MalformedURLException, IOException {
-    Response resp = client.get(new URL("http://httpstat.us/200"));
+    Response resp = client.get(new URL("https://httpstat.us/200"));
     assertThat(resp.getStatusCode()).isEqualTo(200);
     assertThat(resp.getStatusMessage()).isEqualTo("OK");
     assertThat(resp.getContent()).isNotEmpty();
@@ -31,14 +31,14 @@ public class SimpleHttpClientTest {
   @Test
   void nonexistantPageThrowsFileNotFound() throws MalformedURLException, IOException {
     assertThatThrownBy(() -> {
-      client.get(new URL("http://httpstat.us/404"));
+      client.get(new URL("https://httpstat.us/404"));
     }).isInstanceOf(FileNotFoundException.class);
   }
 
   @Test
   void errorPageThrowsIOException() throws MalformedURLException, IOException {
     assertThatThrownBy(() -> {
-      client.get(new URL("http://httpstat.us/500"));
+      client.get(new URL("https://httpstat.us/500"));
     }).isInstanceOf(IOException.class);
   }
 
