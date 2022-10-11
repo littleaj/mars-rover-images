@@ -11,3 +11,4 @@ config.properties
 .classpath
 .settings
 .vscode
+/.idea/
