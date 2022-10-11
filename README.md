@@ -52,7 +52,7 @@ To change logging configuration, modify `logging.properties` to your liking and 
 
 Each query's response is cached by its `earth_date` parameter. The filename is the date used for the query.
 
-If the response contains an empty list of images, a cache file is not created.
+If the response contains an empty list of images, a cache file is not created. This is because I noticed that the images take about a day to become available from the API.
 
 ## Potential Improvements
 ### Configuration Model
