@@ -17,6 +17,7 @@ import org.github.littleaj.marsroverimages.json.GsonParser;
 import org.github.littleaj.marsroverimages.json.JsonParser;
 import org.github.littleaj.marsroverimages.params.AppParamsParser;
 import org.github.littleaj.marsroverimages.service.MarsImagesService;
+import org.github.littleaj.marsroverimages.service.MarsImagesServiceImpl;
 
 public class App {
 
@@ -37,7 +38,7 @@ public class App {
 
     try {
       JsonParser jsonParser = new GsonParser();
-      var service = new MarsImagesService(
+      MarsImagesService service = new MarsImagesServiceImpl(
           new MarsImagesClient(config.getApiKey(), new SimpleHttpClient(), jsonParser),
           new SimpleFileCache(new File(System.getProperty("java.io.tmpdir"))),
           config.getLimitPerDay()

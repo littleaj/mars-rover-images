@@ -26,9 +26,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class MarsImagesServiceTest {
+public class MarsImagesServiceImplTest {
 
-  private MarsImagesService service;
+  private MarsImagesServiceImpl service;
 
   @TempDir
   File tempDir;
@@ -41,7 +41,7 @@ public class MarsImagesServiceTest {
   @BeforeEach
   void setup() {
     cache = spy(new SimpleFileCache(tempDir));
-    service = new MarsImagesService(mockClient, cache, Integer.MAX_VALUE);
+    service = new MarsImagesServiceImpl(mockClient, cache, Integer.MAX_VALUE);
   }
 
   @Test
@@ -64,7 +64,7 @@ public class MarsImagesServiceTest {
           var date = invocation.getArgument(0, String.class);
           return getTestResponse(3, "_" + date);
         });
-    service = new MarsImagesService(mockClient, cache, 2);
+    service = new MarsImagesServiceImpl(mockClient, cache, 2);
     var images = service.getImages(mar10_1999, 1);
     assertThat(images).size().isEqualTo(1);
     assertThat(images).containsOnlyKeys(mar10_1999.toString());
@@ -85,7 +85,7 @@ public class MarsImagesServiceTest {
           return getTestResponse(3, "_" + date);
         });
     
-    service = new MarsImagesService(mockClient, cache, 1);
+    service = new MarsImagesServiceImpl(mockClient, cache, 1);
     var images = service.getImages(oct09_2022, 3);
     assertThat(images).size().isEqualTo(3);
     assertThat(images).containsOnlyKeys(oct09_2022.toString(), oct08_2022.toString(), oct07_2022.toString());
@@ -104,7 +104,7 @@ public class MarsImagesServiceTest {
   void limitEnforcedAfterCaching() {
     when(mockClient.getImagesForDay(anyString()))
         .thenReturn(getTestResponse(4, "_cachetest"));
-    service = new MarsImagesService(mockClient, cache, 1);
+    service = new MarsImagesServiceImpl(mockClient, cache, 1);
     LocalDate date = LocalDate.parse("2020-12-21");
     var result1 = service.getImages(date, 1);
     assertThat(result1).containsOnlyKeys(date.toString());
@@ -112,7 +112,7 @@ public class MarsImagesServiceTest {
       assertThat(value).hasSize(1);
     });
 
-    service = new MarsImagesService(mockClient, cache, 3);
+    service = new MarsImagesServiceImpl(mockClient, cache, 3);
     var result2 = service.getImages(date, 1);
     assertThat(result2).containsOnlyKeys(date.toString());
     assertThat(result2).hasEntrySatisfying(date.toString(), value -> {
