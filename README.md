@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/littleaj/mars-rover-images/actions/workflows/gradle.yml/badge.svg)](https://github.com/littleaj/mars-rover-images/actions/workflows/gradle.yml)
+
 # Mars Rover Images CLI
 
 ## Building
