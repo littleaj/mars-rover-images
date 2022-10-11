@@ -12,6 +12,7 @@ This compiles and runs the tests.
 ```
 ./gradlew run
 ```
+
 ### Running with Arguments
 Replace `<program arguments>` with appropriate options and parameters.
 ```
@@ -24,13 +25,13 @@ Only `apikey` is required to run the program. This can be provided using CLI par
 If both are provided, the CLI parameters will be used.
 ### CLI Parameters
 Parameters can appear in any order.
-| Option | Effect | Default |
-|-|-|-|
-|`YYYY-mm-dd`| set start date | Today's date |
-|`--days N`| return past `N` days of data | 10 |
-|`--limitPerDay N` | return `N` images for each day | 3 |
-|`--apikey KEY`| sets the API key to `KEY` | _REQUIRED_
-||||
+
+| Option            | Effect                         | Default      |
+|-------------------|--------------------------------|--------------|
+| `YYYY-mm-dd`      | set start date                 | Today's date |
+| `--days N`        | return past `N` days of data   | 10           |
+| `--limitPerDay N` | return `N` images for each day | 3            |
+| `--apikey KEY`    | sets the API key to `KEY`      | _REQUIRED_   |
 
 ### Config File
 Optionally, the parameters can be provided via a configuration file. Create a file named `config.properties` in the root project folder. Then, add any of the following properties:
