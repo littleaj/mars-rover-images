@@ -40,6 +40,7 @@ days=10
 limitPerDay=3
 startDate=2022-01-01
 ```
+Then, rebuild the project to include the configuration.
 
 ## Log File
 `$TEMP/mars-rover-images/*.log`
